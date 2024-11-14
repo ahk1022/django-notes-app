@@ -11,12 +11,12 @@ pipeline{
         }
         stage("Code Build"){
             steps{
-            dockerbuild("notes-app","latest")
+            docker_build("notes-app","latest","ahk3983")
             }
         }
         stage("Push to DockerHub"){
             steps{
-                dockerpush("DockerHubCreds","notes-app","latest")
+                docker_push("DockerHubCreds","notes-app","latest","ahk3983")
             }
         }
         stage("Deploy"){
