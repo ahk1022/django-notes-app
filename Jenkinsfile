@@ -1,12 +1,12 @@
-@Library('Shared')_
+@Library('shared')_
 pipeline{
-    agent { label 'dev-server'}
+    agent { label 'ahk'}
     
     stages{
         stage("Code clone"){
             steps{
-                sh "whoami"
-            clone("https://github.com/LondheShubham153/django-notes-app.git","main")
+                
+            clone("https://github.com/ahk1022/django-notes-app.git","main")
             }
         }
         stage("Code Build"){
@@ -16,7 +16,7 @@ pipeline{
         }
         stage("Push to DockerHub"){
             steps{
-                dockerpush("dockerHubCreds","notes-app","latest")
+                dockerpush("DockerHubCreds","notes-app","latest")
             }
         }
         stage("Deploy"){
